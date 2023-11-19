@@ -1,0 +1,3 @@
+Best_Case: O(n^2)
+Average_Case: O(n^2)
+Worst_Case: o(N^2)
