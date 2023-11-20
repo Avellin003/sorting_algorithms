@@ -31,4 +31,5 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 /*3-quick_sort.c*/
 void quick_sort(int *array, size_t size);
+int partition(int array[], int lbindex, int ubindex);
 #endif
