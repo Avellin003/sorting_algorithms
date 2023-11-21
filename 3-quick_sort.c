@@ -20,11 +20,11 @@ int partition(int array[], int lbindex, int ubindex, size_t size)
 				array[start] = temp;
 			}
 		}
-		print_array(array, size);
 	}
-	/*temp = array[end];
+	print_array(array, size);
+	temp = array[end];
 	array[end] = array[lbindex];
-	array[lbindex] = temp;*/
+	array[lbindex] = temp;
 
 	return (end);
 
