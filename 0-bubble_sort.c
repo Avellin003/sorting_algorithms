@@ -11,14 +11,17 @@ void bubble_sort(int *array, size_t size)
 	int temp;
 	size_t swapped;
 
+	/*if we don't have atleast 2 members to compare do nothing*/
 	if (array == NULL || size < 2)
 		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
+		/*sets up the swapped to 0 and begins by taking first member*/
 		swapped = 0;
 		for (j = 0; j < size - i - 1; j++)
 		{
+			/*here the second member is choosed and the cmp starts*/
 			if (array[j] > array[j + 1])
 			{
 				temp = array[j];
@@ -28,6 +31,7 @@ void bubble_sort(int *array, size_t size)
 				print_array(array, size);
 			}
 		}
+		/*if the swapped is 0 the cmp is done and so stop*/
 		if (swapped == 0)
 			break;
 	}
