@@ -2,31 +2,26 @@
 
 int partition(int array[], int lbindex, int ubindex, size_t size)
 {
-	int pivot = array[lbindex];
-	int start = lbindex;
-	int end = ubindex;
+	int pivot = array[ubindex];
+	int start = lbindex - 1, n;
 	int temp;
 
-	while (start < end)
+	for (n = lbindex; n <= ubindex; n++)
 	{
-		if (array[end] <= pivot)
+		if (array[n] <= pivot)
 		{
 			start++;
-			if (start < end)
+			if (start != n)
 			{
-				/*swap(array[start], array[end])*/
-				temp = array[end];
-				array[end] = array[start];
+				temp = array[n];
+				array[n] = array[start];
 				array[start] = temp;
+				print_array(array, size);
 			}
 		}
 	}
-	print_array(array, size);
-	temp = array[end];
-	array[end] = array[lbindex];
-	array[lbindex] = temp;
 
-	return (end);
+	return (start);
 
 }
 /**
