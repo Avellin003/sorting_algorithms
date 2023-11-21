@@ -14,29 +14,29 @@ void insertion_sort_list(listint_t **list)
 
 	while (current != NULL)
 	{
-		listint_t *temp = current; /*before current->next*/
-		listint_t *c_prev = current->prev;
+		listint_t *temp = current->next;
+		listint_t *prev = current->prev;
 
-		while (c_prev != NULL && c_prev->n > current->n)
+		while (prev != NULL && prev->n > current->n)
 		{
-			current->next = c_prev->next;
+			prev->next = current->next;
 
-			if (c_prev->next != NULL)
-				c_prev->next->prev = current;
+			if (current->next != NULL)
+				current->next->prev = prev;
 
-			c_prev->next = current;
-			c_prev->prev = current->prev;
+			current->next = prev;
+			current->prev = prev->prev;
 
-			if (current->prev != NULL)
-				current->prev->next = c_prev;
+			if (prev->prev != NULL)
+				prev->prev->next = current;
 			else
-				*list = c_prev;
+				*list = current;
 
-			current->prev = c_prev;
+			prev->prev = current;
 
 			print_list(*list);
 
-			c_prev = current->prev;
+			prev = current->prev;
 		}
 		current = temp;
 	}
