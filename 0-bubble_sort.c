@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * bubble_sort - arranges in ascending with bubble algorithm
  * @array: pointer to the array of numbers
