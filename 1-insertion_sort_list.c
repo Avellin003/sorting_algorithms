@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * insertion_sort_list - sorts using the insertion algorithm
  * @list: Ptr to the head of the doubly linked list
@@ -7,37 +6,42 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = (*list)->next;
+	listint_t *now;
+	listint_t *previous;
+	listint_t *inlocation;
 
+	/*check wether the list exists and have a location*/
 	if (list == NULL || *list == NULL)
 		return;
+	now = (*list)->next;
+	/*lets set the now pointer to second member in the list*/
 
-	while (current != NULL)
+	while (now != NULL)
 	{
-		listint_t *temp = current->next;
-		listint_t *prev = current->prev;
+		inlocation = now;
+		previous = now->prev;
 
-		while (prev != NULL && prev->n > current->n)
+		while (previous != NULL && previous->n > now->n)
 		{
-			prev->next = current->next;
+			/*interchange basing on the greatest*/
+			if (now->next != NULL)
+				now->next->prev = previous;
 
-			if (current->next != NULL)
-				current->next->prev = prev;
+			previous->next = now->next;
+			now->prev = previous->prev;
+			now->prev = now;
 
-			current->next = prev;
-			current->prev = prev->prev;
-
-			if (prev->prev != NULL)
-				prev->prev->next = current;
+			if (now->prev != NULL)
+				now->prev->next = node;
 			else
-				*list = current;
+				*list = now;
 
-			prev->prev = current;
+			now->next = previous;
 
 			print_list(*list);
 
-			prev = current->prev;
+			previous = now->prev;
 		}
-		current = temp;
+		now = inlocation->next;
 	}
 }
