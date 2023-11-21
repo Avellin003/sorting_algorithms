@@ -11,7 +11,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *inlocation;
 
 	/*check wether the list exists and have a location*/
-	if (list == NULL || *list == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 	now = (*list)->next;
 	/*lets set the now pointer to second member in the list*/
@@ -29,14 +29,14 @@ void insertion_sort_list(listint_t **list)
 
 			previous->next = now->next;
 			now->prev = previous->prev;
-			now->prev = now;
+			now->next = previous;
 
 			if (now->prev != NULL)
 				now->prev->next = now;
 			else
 				*list = now;
 
-			now->next = previous;
+			previous->prev = now;
 
 			print_list(*list);
 
